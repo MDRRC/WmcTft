@@ -286,9 +286,18 @@ void WmcTft::UpdateLocInfo(
         ShowLampStatus(locInfoRcvPtr->Light);
     }
 
+    /* Update function only when changed. */
     for (Index = 0; Index < 5; Index++)
     {
         Function = assignedFunctions[Index];
+
+        if ((Index == 0) && (Function == 0))
+        {
+            // If previous loc had an assigned function to button instead of light
+            // and new selected loc has light selected to button 0 remove the
+            // function status.
+            tft.fillRect(9, 100, 20, 20, ST7735_BLACK);
+        }
         if ((updateAll == true)
             || (((locInfoRcvPtr->Functions & (1 << (Function - 1)))
                    != (locInfoActPtr->Functions & (1 << (Function - 1))))))
