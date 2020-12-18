@@ -106,18 +106,25 @@ void WmcTft::Init(void)
 void WmcTft::ShowVersion(uint16_t SwMajor, uint8_t SwMinor, uint8_t SwPatch)
 {
     char VersionStr[20];
+    char DateStr[20];
 
     if (SwPatch != 99)
     {
         snprintf(VersionStr, sizeof(VersionStr), "%02hu.%02hu.%02hu", SwMajor, SwMinor, SwPatch);
+        tft.setTextSize(1);
+        tft.setCursor(39, 103);
+        tft.print(VersionStr);
     }
     else
     {
-        snprintf(VersionStr, sizeof(VersionStr), " %04hu", SwMajor);
+        snprintf(VersionStr, sizeof(VersionStr), "%s", __TIME__);
+        snprintf(DateStr, sizeof(DateStr), "%s", __DATE__);
+        tft.setTextSize(1);
+        tft.setCursor(27, 103);
+        tft.print(DateStr);
+        tft.setCursor(39, 112);
+        tft.print(VersionStr);
     }
-    tft.setTextSize(1);
-    tft.setCursor(39, 103);
-    tft.print(VersionStr);
 }
 
 /***********************************************************************************************************************
@@ -218,6 +225,19 @@ void WmcTft::UpdateSelectedAndNumberOfLocs(uint8_t actualLocIndex, uint8_t Numbe
     tft.print("/");
     tft.print(NumberOfLocs);
     tft.print(")");
+}
+
+/***********************************************************************************************************************
+ * Remove speed, show selected loc adress white and remove all functions while selecting.
+ */
+void WmcTft::UpdateLocInfoSelect(uint16_t Address, char* LocName)
+{
+    // Show info.
+    ShowlocAddress(Address, WmcTft::color_white);
+    ShowlocName(LocName, WmcTft::color_green);
+
+    // Remove all functions
+    tft.fillRect(1, 100, 126, 20, ST7735_BLACK);
 }
 
 /***********************************************************************************************************************

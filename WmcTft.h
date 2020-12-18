@@ -133,6 +133,11 @@ public:
         locoInfo* locInfoRcvPtr, locoInfo* locInfoActPtr, uint8_t* assignedFunctions, char* LocName, bool updateAll);
 
     /**
+     * Update loc data directly.
+     */
+    void UpdateLocInfoSelect(uint16_t Address, char *LocName);
+
+    /**
      * Show | or - as indicating waiting on something.
      */
     void UpdateRunningWheel(uint8_t count);
