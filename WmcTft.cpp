@@ -632,6 +632,7 @@ void WmcTft::ShowLocSymbolFw(color locSymbolColor)
     case color_green: tft.drawBitmap(85, 20, locBitmapFw, 28, 28, ST7735_BLACK, ST7735_GREEN); break;
     case color_white: tft.drawBitmap(85, 20, locBitmapFw, 28, 28, ST7735_BLACK, ST7735_WHITE); break;
     case color_yellow: tft.drawBitmap(85, 20, locBitmapFw, 28, 28, ST7735_BLACK, ST7735_YELLOW); break;
+    case color_magenta: break;
     }
 }
 
@@ -645,6 +646,7 @@ void WmcTft::ShowLocSymbolBw(color locSymbolColor)
     case color_green: tft.drawBitmap(85, 20, locBitmapBw, 28, 28, ST7735_BLACK, ST7735_GREEN); break;
     case color_white: tft.drawBitmap(85, 20, locBitmapBw, 28, 28, ST7735_BLACK, ST7735_WHITE); break;
     case color_yellow: tft.drawBitmap(85, 20, locBitmapBw, 28, 28, ST7735_BLACK, ST7735_YELLOW); break;
+    case color_magenta: break;
     }
 }
 
@@ -720,6 +722,7 @@ uint16_t WmcTft::getColor(color Clr)
     case color_green: ColorReturn = ST7735_GREEN; break;
     case color_yellow: ColorReturn = ST7735_YELLOW; break;
     case color_white: ColorReturn = ST7735_WHITE; break;
+    case color_magenta: ColorReturn = ST7735_MAGENTA; break;
     default: ColorReturn = ST7735_RED; break;
     }
 

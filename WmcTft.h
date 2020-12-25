@@ -32,6 +32,7 @@ public:
         color_green,
         color_white,
         color_yellow,
+        color_magenta,
     };
 
     /**
@@ -135,7 +136,7 @@ public:
     /**
      * Update loc data directly.
      */
-    void UpdateLocInfoSelect(uint16_t Address, char *LocName);
+    void UpdateLocInfoSelect(uint16_t Address, char* LocName);
 
     /**
      * Show | or - as indicating waiting on something.
