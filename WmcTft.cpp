@@ -236,7 +236,8 @@ void WmcTft::UpdateLocInfoSelect(uint16_t Address, char* LocName)
     ShowlocAddress(Address, WmcTft::color_white);
     ShowlocName(LocName, WmcTft::color_green);
 
-    // Remove all functions
+    // Remove speed light and all functions during selection.
+    tft.fillRect(0, 53, 126, 30, ST7735_BLACK);
     tft.fillRect(1, 100, 126, 20, ST7735_BLACK);
 }
 
@@ -471,8 +472,7 @@ void WmcTft::ShowTurnoutDirection(uint8_t direction)
 {
     switch (direction)
     {
-    case 0: tft.drawBitmap(85, 20, TurnoutBitmap, 28, 28, ST7735_BLACK, ST7735_WHITE); break;
-    case 1: tft.drawBitmap(85, 20, TurnoutForwardBitmap, 28, 28, ST7735_BLACK, ST7735_WHITE); break;
+    case 0: tft.drawBitmap(85, 20, TurnoutForwardBitmap, 28, 28, ST7735_BLACK, ST7735_WHITE); break;
     case 2: tft.drawBitmap(85, 20, TurnoutLeftBitmap, 28, 28, ST7735_BLACK, ST7735_WHITE); break;
     default: tft.drawBitmap(85, 20, TurnoutBitmap, 28, 28, ST7735_BLACK, ST7735_WHITE); break;
     }
